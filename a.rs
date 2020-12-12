@@ -14,8 +14,14 @@ impl Shape for Circle {
   }
 }
 
+impl Circle {
+  fn get_radius(&self) -> f64 {
+    self.radius
+  }
+}
+
 fn main() {
   let c = Circle { radius: 2f64 };
-  println!("The area is {}", c.area());
+  println!("The area is {}", c.get_radius());
 }
 
