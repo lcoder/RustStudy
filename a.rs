@@ -1,12 +1,16 @@
-#![feature(const_fn)]
 
-const fn cube(num: usize) -> usize {
-  num * num * num
-}
 
 fn main() {
-  const DIM: usize = cube(3);
-
-  println!("DIM={}", DIM);
+  trait T {
+    fn method1(self: Self);
+    fn method2(self: &Self);
+    fn method3(self: &mut Self);
+  }
+  // 上下等价
+  trait T2 {
+    fn method1(self);
+    fn method2(&self);
+    fn method3(&mut self);
+  }
 }
 
