@@ -1,16 +1,21 @@
 
+trait Shape {
+  fn area(self: &Self) -> f64;
+  // 等价于上面的
+  // fn area(&self) -> f64;
+}
+struct Circle {
+  radius: f64,
+}
+
+impl Shape for Circle {
+  fn area(&self) -> f64 {
+    std::f64::consts::PI * self.radius * self.radius
+  }
+}
 
 fn main() {
-  trait T {
-    fn method1(self: Self);
-    fn method2(self: &Self);
-    fn method3(self: &mut Self);
-  }
-  // 上下等价
-  trait T2 {
-    fn method1(self);
-    fn method2(&self);
-    fn method3(&mut self);
-  }
+  let c = Circle { radius: 2f64 };
+  println!("The area is {}", c.area());
 }
 
