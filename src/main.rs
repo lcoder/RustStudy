@@ -1,18 +1,17 @@
-#[derive(Debug)]
 
-struct Point3d {
-  x: i32,
-  y: i32,
-  z: i32,
+trait Double {
+  fn double(&self) -> Self;
 }
 
-fn default() -> Point3d {
-  Point3d { x: 0, y: 0, z: 0 }
+impl Double for i32 {
+  fn double(&self) -> i32 {
+    *self * 2
+  }
 }
+
 
 fn main() {
-  let origin = Point3d { x: 5, ..default() };
-  let point = Point3d { z: 1, x: 2, ..origin };
-  println!("origin origin = {:?} point = {:?}", origin, point);
+  let x:i32 = 10.double();
+  println!("x = {}", x);
 }
 
