@@ -1,17 +1,29 @@
 
-trait Double {
-  fn double(&self) -> Self;
+trait Cook {
+  fn start(&self);
 }
 
-impl Double for i32 {
-  fn double(&self) -> i32 {
-    *self * 2
+trait Wash {
+  fn start(&self);
+}
+
+struct Chef;
+
+impl Cook for Chef {
+  fn start(&self) {
+    println!("Cook::start");
   }
 }
 
+impl Wash for Chef {
+  fn start(&self) {
+    println!("Wash::start");
+  }
+}
 
 fn main() {
-  let x:i32 = 10.double();
-  println!("x = {}", x);
+  let me = Chef;
+  <Cook>::start(&me);
+  <Chef as Wash>::start(&me);
 }
 
