@@ -1,13 +1,19 @@
 use std::fmt::Debug;
 
-fn my_print<T>(x: T) where T: Debug {
-  println!("The value is {:?}", x);
-}
+trait Base {}
+
+// trait Derived: Base {}
+
+// 或者如下  给Derived这个trait加了个约束条件，即实现Derived trait的具体类型，也必须满足Base trait的约束
+trait Derived where Self: Base {}
+
+struct T;
+
+impl Derived for T {}
+
+impl Base for T {}
 
 fn main() {
-  my_print("China");
-  my_print(41_i32);
-  my_print(true);
-  my_print(['a', 'b', 'c']);
+  
 }
 
