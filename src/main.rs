@@ -1,29 +1,22 @@
 
-trait Cook {
-  fn start(&self);
-}
+struct T(usize);
 
-trait Wash {
-  fn start(&self);
-}
-
-struct Chef;
-
-impl Cook for Chef {
-  fn start(&self) {
-    println!("Cook::start");
+impl T {
+  fn get1(&self) -> usize {
+    self.0
+  }
+  fn get2(&self) -> usize {
+    self.0
   }
 }
 
-impl Wash for Chef {
-  fn start(&self) {
-    println!("Wash::start");
-  }
-}
+fn get3(t: &T) -> usize { t.0 }
+
+fn check_type(_ : fn(&T) -> usize) {}
 
 fn main() {
-  let me = Chef;
-  <Cook>::start(&me);
-  <Chef as Wash>::start(&me);
+  check_type(T::get1);
+  check_type(T::get2);
+  check_type(get3);
 }
 
