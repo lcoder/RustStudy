@@ -1,19 +1,12 @@
-use std::fmt::Debug;
+#[derive(Copy, Clone, Default, Debug, Hash, PartialEq, Eq, PartialOrd, Ord)]
 
-trait Base {}
-
-// trait Derived: Base {}
-
-// 或者如下  给Derived这个trait加了个约束条件，即实现Derived trait的具体类型，也必须满足Base trait的约束
-trait Derived where Self: Base {}
-
-struct T;
-
-impl Derived for T {}
-
-impl Base for T {}
+struct Foo {
+  data: i32,
+}
 
 fn main() {
-  
+  let v1 = Foo { data: 0 };
+  let v2 = v1;
+  println!("{:?}", v2);
 }
 
