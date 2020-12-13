@@ -1,32 +1,15 @@
 
-trait Shape {
-  fn area(&self) -> f64;
-}
+struct T(i32);
 
-trait Round {
-  fn get_radius(&self) -> f64;
-}
-
-struct Circle {
-  radius: f64,
-}
-
-impl Round for Circle {
-  fn get_radius(&self) -> f64 {
-    self.radius
-  }
-}
-
-impl Shape for Round {
-  fn area(&self) -> f64 {
-    std::f64::consts::PI * self.get_radius() * self.get_radius()
+impl T {
+  fn func(this: &Self) {
+    println!("value {}", this.0);
   }
 }
 
 fn main() {
-  // let c = Circle { radius: 2f64 };
-  // c.area();
-  let b = Box::new(Circle { radius: 4f64 }) as Box<Round>;
-  b.area();
+  let x = T(42);
+
+  T::func(&x);
 }
 
