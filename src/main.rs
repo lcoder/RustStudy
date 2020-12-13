@@ -1,6 +1,6 @@
 use std::fmt::Debug;
 
-fn my_print<T: Debug>(x: T) {
+fn my_print<T>(x: T) where T: Debug {
   println!("The value is {:?}", x);
 }
 
