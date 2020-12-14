@@ -1,17 +1,18 @@
+fn raw_slice(arr: &[i32]) {
+  unsafe {
+    let (val1, val2): (usize, usize) = std::mem::transmute(arr);
+    println!("Value in row pointer:");
+    println!("value1: {:x}", val1);
+    println!("value2: {:x}", val2);
+  }
+}
 
 fn main() {
-  fn mut_array(a: &mut [i32]) {
-    a[2] = 5;
-  }
+  let arr: [i32; 5] = [1,2,3,4,5];
+  let address: &[i32; 5] = &arr;
 
-  println!("size of &[i32; 3]: {:?}", std::mem::size_of::<&[i32; 3]>());
-  println!("size of &[i32] : {:?}", std::mem::size_of::<&[i32]>());
+  println!("Address of arr: {:p}", address);
 
-  let mut v: [i32; 3] = [1,2,3];
-  {
-    let s: &mut [i32; 3] = &mut v;
-    mut_array(s);
-  }
-  println!("{:?}", v);
+  raw_slice(address as &[i32]);
 }
 
