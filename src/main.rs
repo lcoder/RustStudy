@@ -1,12 +1,11 @@
-#[lang = "sized"]
-#[rustc_on_unimplemented = "`{Self}` does not have a constant size known at compile-time"]
-#[fundamental] // for Default,for example,which required taht `[T]: !Default` be evaluatable
-pub trait Sized {
-  // Empty.
-}
-
 
 fn main() {
-  
+  // 定长数组
+  let xs: [i32; 5] = [1, 2, 3, 4, 5];
+
+  // 初始化为相同的500个数据
+  let ys: [i32; 10] = [0; 10];
+
+  println!("xs = {:?}; ys = {:?}", xs, ys);
 }
 
