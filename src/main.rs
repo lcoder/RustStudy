@@ -1,15 +1,21 @@
-use std::ascii::AsciiExt;
 
 fn main() {
-  fn capitalize(substr: &mut str) {
-    substr.make_ascii_uppercase();
+  struct T1 (i32, char);
+  struct T2 {
+    item1: T1,
+    item2: bool,
   }
 
-  let mut s = String::from("Hello World");
+  let x = T2 {
+    item1: T1 (0, 'A'),
+    item2: false,
+  };
 
-  // 编译器自动做了类型转换 &mut String -> &mut str
-  capitalize(&mut s);
+  let T2 {
+    item1: T1(value1, value2),
+    item2: value3,
+  } = x;
 
-  println!("{}", s);
+  println!("{} {} {}", value1, value2, value3);
 }
 
