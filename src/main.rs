@@ -1,18 +1,20 @@
-fn raw_slice(arr: &[i32]) {
-  unsafe {
-    let (val1, val2): (usize, usize) = std::mem::transmute(arr);
-    println!("Value in row pointer:");
-    println!("value1: {:x}", val1);
-    println!("value2: {:x}", val2);
-  }
-}
+use std::iter::Iterator;
+use std::ops::Range;
 
 fn main() {
-  let arr: [i32; 5] = [1,2,3,4,5];
-  let address: &[i32; 5] = &arr;
+  let r = 1..10;
+  for i in r {
+    print!("{:?}\t", i);
+  } 
+  let r = Range { start: 1, end: 10 };
+  for i in r {
+    print!("{:?}\t", i)
+  }
 
-  println!("Address of arr: {:p}", address);
+  let r = (1i32..11).rev().map(|i| i * 10);
 
-  raw_slice(address as &[i32]);
+  for i in r {
+    print!("{:?}\t", i);
+  }
 }
 
