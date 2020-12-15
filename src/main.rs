@@ -1,13 +1,15 @@
-
+use std::ascii::AsciiExt;
 
 fn main() {
-  let greeting: &str = "Hello";
+  fn capitalize(substr: &mut str) {
+    substr.make_ascii_uppercase();
+  }
 
-  let substr: &str = &greeting[2..];
+  let mut s = String::from("Hello World");
 
-  println!("{}", substr);
+  // 编译器自动做了类型转换 &mut String -> &mut str
+  capitalize(&mut s);
 
-  println!("Size of pointer: {}", std::mem::size_of::<*const ()>());
-  println!("Size of &str : {}", std::mem::size_of::<&str>());
+  println!("{}", s);
 }
 
