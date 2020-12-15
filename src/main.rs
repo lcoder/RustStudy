@@ -1,23 +1,12 @@
 
-fn print_slice(arr: &[i32]) {
-  println!("Length: {}", arr.len());
-
-  for item in arr {
-    print!("{}\t", item);
-  }
-
-  println!("");
-}
-
 
 fn main() {
-  let arr: [i32; 5] = [1,2,3,4,5];
-  print_slice(&arr[..]);   // full range
+  let v = [10i32, 20, 30, 40, 50];
 
-  let slice = &arr[2..];   // rangeFrom
-  print_slice(slice);
+  let index: usize = std::env::args().nth(1).map(
+    |x| x.parse().unwrap_or(0)
+  ).unwrap_or(0);
 
-  let slice2 = &arr[..2];  // RangeTo
-  print_slice(slice2);
+  println!("{:?}", v[index]);
 }
 
