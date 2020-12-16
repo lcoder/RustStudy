@@ -1,21 +1,23 @@
 
-fn main() {
-  struct T1 (i32, char);
-  struct T2 {
-    item1: T1,
-    item2: bool,
+enum Direction {
+  East,
+  West,
+  South,
+  North,
+}
+
+fn print(x: Direction) {
+  match x {
+    Direction::East => { println!("East"); }
+    Direction::West => { println!("West"); }
+    Direction::South => { println!("South"); }
+    Direction::North => { println!("North"); }
   }
+}
 
-  let x = T2 {
-    item1: T1 (0, 'A'),
-    item2: false,
-  };
 
-  let T2 {
-    item1: T1(value1, value2),
-    item2: value3,
-  } = x;
-
-  println!("{} {} {}", value1, value2, value3);
+fn main() {
+  let x = Direction::East;
+  print(x);
 }
 
