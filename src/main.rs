@@ -11,13 +11,15 @@ fn print(x: Direction) {
     Direction::East => { println!("East"); }
     Direction::West => { println!("West"); }
     Direction::South => { println!("South"); }
-    Direction::North => { println!("North"); }
+    _ => {
+      println!("Other");
+    }
   }
 }
 
 
 fn main() {
-  let x = Direction::East;
+  let x = Direction::North;
   print(x);
 }
 
