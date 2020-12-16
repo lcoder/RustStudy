@@ -1,25 +1,13 @@
+struct P (f32, f32, f32);
 
-enum Direction {
-  East,
-  West,
-  South,
-  North,
+fn calc(arg: P) -> f32 {
+  let P(x, _, y) = arg;
+  x * x + y * y
 }
-
-fn print(x: Direction) {
-  match x {
-    Direction::East => { println!("East"); }
-    Direction::West => { println!("West"); }
-    Direction::South => { println!("South"); }
-    _ => {
-      println!("Other");
-    }
-  }
-}
-
 
 fn main() {
-  let x = Direction::North;
-  print(x);
+  let t = P (1.0, 2.0, 3.0);
+
+  println!("{}", calc(t));
 }
 
