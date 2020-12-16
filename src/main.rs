@@ -1,13 +1,12 @@
-struct P (f32, f32, f32);
-
-fn calc(arg: P) -> f32 {
-  let P(x, _, y) = arg;
-  x * x + y * y
-}
 
 fn main() {
-  let t = P (1.0, 2.0, 3.0);
+  let x = (1, 2, 3);
+  // let (a, _, _) = x;
 
-  println!("{}", calc(t));
+  let (a, ..) = x;
+
+  // let (a, .., b) = x;
+
+  println!("{}", a);
 }
 
