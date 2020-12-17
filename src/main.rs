@@ -1,16 +1,16 @@
+#![feature(exclusive_range_pattern)]
 
-enum OptionalInt {
-  Value(i32),
-  Missing,
+fn deep_match(v: Option<Option<i32>>) -> Option<i32> {
+  match v {
+    Some(r @ Some(1..10)) => r,
+    _ => None,
+  }
 }
 
 fn main() {
-  let x = 10;
-  match x {
-    i if i > 5 => println!("bigger than five"),
-    i if i <= 5 => println!("less to five"),
-    // 虽然已经覆盖了所有情况，可惜还是会出现编译器错误，只能加入这么一条分支，单纯避免编译错误
-    _ => unreachable!(),
-  }
+  let x = Some(Some(5));
+  println!("{:?}", deep_match(x));
 
+  let y = Some(Some(100));
+  println!("{:?}", deep_match(y));
 }
