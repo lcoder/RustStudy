@@ -1,9 +1,8 @@
 
 fn main() {
-  let x = 6;
+  let x = 5_i32;
 
   match x {
-    e @ 1 ... 5 | e @ 8 ... 10 => println!("got a range element {}", e),
-    _ => println!("anything"),
+    ref r => println!("Got a reference to {}", r),  // r的类型是&i32
   }
 }
