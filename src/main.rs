@@ -1,12 +1,21 @@
 
+enum OptionalInt {
+  Value(i32),
+  Missing,
+}
+
 fn main() {
-  let x = 'X';
+  let x = OptionalInt::Value(6);
 
   match x {
-    'a' ..= 'z' => println!("lowercase"),
-    'A' ..= 'Z' => println!("uppercase"),
-    _ => println!("sth else"),
+    OptionalInt::Value(i) if i > 5 => {
+      println!("bigger than five!");
+    }
+    OptionalInt::Value(..) => {
+      println!("got an int");
+    }
+    OptionalInt::Missing => {
+      println!("No such luck")
+    }
   }
-
-
 }
