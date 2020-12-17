@@ -5,17 +5,12 @@ enum OptionalInt {
 }
 
 fn main() {
-  let x = OptionalInt::Value(6);
-
+  let x = 10;
   match x {
-    OptionalInt::Value(i) if i > 5 => {
-      println!("bigger than five!");
-    }
-    OptionalInt::Value(..) => {
-      println!("got an int");
-    }
-    OptionalInt::Missing => {
-      println!("No such luck")
-    }
+    i if i > 5 => println!("bigger than five"),
+    i if i <= 5 => println!("less to five"),
+    // 虽然已经覆盖了所有情况，可惜还是会出现编译器错误，只能加入这么一条分支，单纯避免编译错误
+    _ => unreachable!(),
   }
+
 }
