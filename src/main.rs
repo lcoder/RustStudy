@@ -1,16 +1,9 @@
-#![feature(exclusive_range_pattern)]
-
-fn deep_match(v: Option<Option<i32>>) -> Option<i32> {
-  match v {
-    Some(r @ Some(1..10)) => r,
-    _ => None,
-  }
-}
 
 fn main() {
-  let x = Some(Some(5));
-  println!("{:?}", deep_match(x));
+  let x = 6;
 
-  let y = Some(Some(100));
-  println!("{:?}", deep_match(y));
+  match x {
+    e @ 1 ... 5 | e @ 8 ... 10 => println!("got a range element {}", e),
+    _ => println!("anything"),
+  }
 }
