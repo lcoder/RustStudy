@@ -1,13 +1,18 @@
 
-#![feature(core_intrinsics)]
-fn print_type_name<T>(_arg: &T) {
-  unsafe {
-    println!("{}", std::intrinsics::type_name::<T>());
-  }
-}
-
 fn main() {
-  let ref x = 5_i32;
+  struct T {
+    item1: char,
+    item2: bool,
+  }
 
-  print_type_name(&x);  // &i32
+  fn test(T{item1: arg1, item2: arg2}: T) {
+    println!("{} {}", arg1, arg2);
+  }
+
+  let x = T {
+    item1: 'A',
+    item2: false,
+  };
+
+  test(x);
 }
